@@ -11,7 +11,7 @@
 **                          IAR ANSI C/C++ Compiler for ARM
 **
 **     Reference manual:    KL25P80M48SF0RM, Rev.3, Sep 2012
-**     Version:             rev. 1.4, 2012-10-04
+**     Version:             rev. 1.5, 2012-11-22
 **
 **     Abstract:
 **         This header file implements peripheral memory map for MKL25Z4
@@ -33,14 +33,17 @@
 **         Device type UARTLP changed to UART0.
 **     - rev. 1.4 (2012-10-04)
 **         Update according to reference manual rev. 3.
+**     - rev. 1.5 (2012-11-22)
+**         MCG module - bit LOLS in MCG_S register renamed to LOLS0.
+**         NV registers - bit EZPORT_DIS in NV_FOPT register removed.
 **
 ** ###################################################################
 */
 
 /**
  * @file MKL25Z4.h
- * @version 1.4
- * @date 2012-10-04
+ * @version 1.5
+ * @date 2012-11-22
  * @brief Peripheral memory map for MKL25Z4
  *
  * This header file implements peripheral memory map for MKL25Z4 processor.
@@ -67,7 +70,7 @@
  * compatible) */
 #define MCU_MEM_MAP_VERSION 0x0100u
 /** Memory map minor version */
-#define MCU_MEM_MAP_VERSION_MINOR 0x0004u
+#define MCU_MEM_MAP_VERSION_MINOR 0x0005u
 
 
 /* ----------------------------------------------------------------------------
@@ -2615,8 +2618,8 @@ typedef struct MCG_MemMap {
 #define MCG_S_PLLST_SHIFT                        5
 #define MCG_S_LOCK0_MASK                         0x40u
 #define MCG_S_LOCK0_SHIFT                        6
-#define MCG_S_LOLS_MASK                          0x80u
-#define MCG_S_LOLS_SHIFT                         7
+#define MCG_S_LOLS0_MASK                         0x80u
+#define MCG_S_LOLS0_SHIFT                        7
 /* SC Bit Fields */
 #define MCG_SC_LOCS0_MASK                        0x1u
 #define MCG_SC_LOCS0_SHIFT                       0
@@ -3342,8 +3345,6 @@ typedef struct NV_MemMap {
 /* FOPT Bit Fields */
 #define NV_FOPT_LPBOOT0_MASK                     0x1u
 #define NV_FOPT_LPBOOT0_SHIFT                    0
-#define NV_FOPT_EZPORT_DIS_MASK                  0x2u
-#define NV_FOPT_EZPORT_DIS_SHIFT                 1
 #define NV_FOPT_NMI_DIS_MASK                     0x4u
 #define NV_FOPT_NMI_DIS_SHIFT                    2
 #define NV_FOPT_RESET_PIN_CFG_MASK               0x8u
@@ -6964,8 +6965,8 @@ typedef struct USB_MemMap {
 #define DMA_REQC2                                This_symbol_has_been_deprecated
 #define DMA_REQC3                                This_symbol_has_been_deprecated
 #define DMA_REQC_ARR(index2)                     This_symbol_has_been_deprecated
-#define MCG_S_LOLS0_MASK                         MCG_S_LOLS_MASK
-#define MCG_S_LOLS0_SHIFT                        MCG_S_LOLS_SHIFT
+#define MCG_S_LOLS_MASK                          MCG_S_LOLS0_MASK
+#define MCG_S_LOLS_SHIFT                         MCG_S_LOLS0_SHIFT
 #define SIM_FCFG2_MAXADDR_MASK                   SIM_FCFG2_MAXADDR0_MASK
 #define SIM_FCFG2_MAXADDR_SHIFT                  SIM_FCFG2_MAXADDR0_SHIFT
 #define SIM_FCFG2_MAXADDR                        SIM_FCFG2_MAXADDR0
@@ -7123,6 +7124,8 @@ typedef struct USB_MemMap {
 #define UARTLP_C5_TDMAE_MASK                     UART0_C5_TDMAE_MASK
 #define UARTLP_C5_TDMAE_SHIFT                    UART0_C5_TDMAE_SHIFT
 #define UARTLP_BASE_PTRS                         UART0_BASE_PTRS
+#define NV_FOPT_EZPORT_DIS_MASK                  This_symbol_has_been_deprecated
+#define NV_FOPT_EZPORT_DIS_SHIFT                 This_symbol_has_been_deprecated
 
 /**
  * @}
